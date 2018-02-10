@@ -7,6 +7,10 @@ var hyperHTML = (function (global) {
 // events via onconnect/ondisconnect attributes
 function Component() {}
 
+Component.prototype = Object.create(EventTarget.prototype);
+Object.setPrototypeOf(Component, EventTarget);
+Component.__proto__ = EventTarget;
+
 // components will lazily define html or svg properties
 // as soon as these are invoked within the .render() method
 // Such render() method is not provided by the base class
